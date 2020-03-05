@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page{
+
+    &__container {
+        margin-top: 64px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &__content {
+
+    }
+
+    &__title {
+        text-align: center;
+    }
+}
+
+form {
+    width: min-content;
+    margin: auto;
+
+    .mat-form-field-wrapper {
+        width: 300px !important;
+        margin: 10px auto;
+    }
+}

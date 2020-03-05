@@ -1,0 +1,18 @@
+<app-page title="Войдите в систему">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Введите логин</mat-label>
+        <input formControlName="login" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Введите пароль</mat-label>
+        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <div class="button-container">
+        <button type="submit" mat-raised-button color="primary">Войти</button>
+    </div>
+</form>
+</app-page>
