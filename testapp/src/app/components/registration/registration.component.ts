@@ -36,20 +36,26 @@ export class RegistrationComponent extends BaseComponent {
 
   onSubmit() {
     const data = new User(this.form.value);
-    this.subscriptions.push(this.userService.regitstration(data).subscribe(() => {
-      this.snackBar.open('Регистрация прошла успешно!', 'ОK', {
-        duration: 2000
-      });
-      this.router.stateService.go('login');
-    }));
+    if (!this.passwordConfirmationNotValid) {
+      this.subscriptions.push(this.userService.regitstration(data).subscribe(() => {
+        this.snackBar.open('Регистрация прошла успешно!', 'ОK', {
+          duration: 2000
+        });
+        this.router.stateService.go('login');
+      }));
+    }
   }
 
   checkPasswordConfirmation() {
-    if (this.form.controls.password.value !== this.form.controls.passwordConfirmation.value &&
-      this.form.controls.password.value.length && this.form.controls.passwordConfirmation.value.length) {
+    if (this.passwordConfirmationNotValid) {
         this.form.controls.passwordConfirmation.setErrors({ notEquivalent: true });
     } else {
       this.form.controls.passwordConfirmation.setErrors(null);
     }
+  }
+
+  get passwordConfirmationNotValid() {
+    return this.form.controls.password.value !== this.form.controls.passwordConfirmation.value &&
+    this.form.controls.password.value.length && this.form.controls.passwordConfirmation.value.length;
   }
 }
