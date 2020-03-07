@@ -12,6 +12,7 @@ import { UIRouter } from '@uirouter/core';
 })
 export class LoginComponent extends BaseComponent {
   form: FormGroup;
+  hidePassword = true;
 
   constructor(private readonly userService: UserService,
               private readonly router: UIRouter) {

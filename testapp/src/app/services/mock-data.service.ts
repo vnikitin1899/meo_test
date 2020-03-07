@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MockDataService {
-  getLoginResult() {
-    const token = 'asasfsdfasdfdsfsdg223fr23f2f';
-    return token;
-  }
+  loginResult = 'asfsadsdbsdvsdavasdvsdavsdvsdvsdv';
 
-  get registerResult() {
-    const registerResult = true;
-    return registerResult;
+  mockRequest(route: string, data?) {
+    let result;
+    switch (route) {
+      case 'api/auth': {
+        result = this.loginResult;
+        break;
+      }
+      case 'api/user/create': {
+        result = data;
+        break;
+      }
+    }
+    return result;
   }
 }

@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { MockDataService } from './mock-data.service';
 import { LoginModel } from '../models/login.model';
-import { Observable, Observer } from 'rxjs';
-import { timeout } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpService } from './http.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private readonly dataService: MockDataService) { }
+  constructor(private readonly http: HttpService) { }
 
   login(data: LoginModel): Observable<string> {
-    return new Observable<string>((observer: Observer<string>) => {
-      const result = this.dataService.getLoginResult();
-      observer.next(result);
-    });
+    return this.http.postData('api/auth', data);
+  }
+
+  regitstration(data: User): Observable<User> {
+    return this.http.postData('api/user/create', data);
   }
 }

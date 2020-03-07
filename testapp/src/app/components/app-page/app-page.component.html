@@ -1,6 +1,12 @@
 <div class="page__container">
     <mat-toolbar class="header" color="primary">
-        {{ title }}
+        <mat-toolbar-row>
+            <span>{{ title }}</span>
+            <span class="spacer"></span>
+            <button *ngIf="showLogout" (click)="logout()" mat-icon-button aria-hidden="false" aria-label="Example heart icon"> 
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </mat-toolbar-row>        
     </mat-toolbar>
     <div class="page__content">
         <ng-content></ng-content>

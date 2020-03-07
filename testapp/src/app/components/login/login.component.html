@@ -1,18 +1,18 @@
 <app-page title="Войдите в систему">
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form__control" appearance="fill">
         <mat-label>Введите логин</mat-label>
         <input formControlName="login" matInput>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="form__control" appearance="fill">
         <mat-label>Введите пароль</mat-label>
-        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'">
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
     </mat-form-field>
     <div class="button-container">
-        <button type="submit" mat-raised-button color="primary">Войти</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Войти</button>
     </div>
 </form>
 </app-page>

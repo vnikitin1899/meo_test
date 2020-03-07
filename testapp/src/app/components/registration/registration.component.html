@@ -1,1 +1,45 @@
-<p>registration works!</p>
+<app-page title="Регистрация пользователя">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form__column form__column--left">
+                <mat-form-field class="form__control form__control--left" appearance="fill">
+                    <mat-label>ФИО</mat-label>
+                    <input formControlName="fullName" required matInput>
+                </mat-form-field>
+                <mat-form-field class="form__control form__control--left" appearance="fill">
+                    <mat-label>E-mail</mat-label>
+                    <input formControlName="email" matInput>
+                    <mat-error *ngIf="form.controls.email.invalid">Введите корректный E-mail</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__control form__control--left" appearance="fill">
+                    <mat-label>Телефон</mat-label>
+                    <input formControlName="phoneNumber" placeholder="+7(999)999-99-99" matInput>
+                    <mat-error *ngIf="form.controls.phoneNumber.invalid">
+                        Введите корректный номер телефона: +7(***)***-**-**
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form__column form__column--left">
+                <mat-form-field class="form__control form__control--right" appearance="fill">
+                    <mat-label>Логин</mat-label>
+                    <input formControlName="login" required matInput>
+                </mat-form-field>
+            
+                <mat-form-field class="form__control form__control--right" appearance="fill">
+                    <mat-label>Пароль</mat-label>
+                    <input (change)="checkPasswordConfirmation()" formControlName="password" required matInput type="password">
+                </mat-form-field>            
+                <mat-form-field class="form__control form__control--right" appearance="fill">
+                    <mat-label>Подтверждение пароля</mat-label>
+                    <input (change)="checkPasswordConfirmation()" formControlName="passwordConfirmation" required matInput type="password">
+                    <mat-error *ngIf="form.get('passwordConfirmation').errors">Пароли должны совпадать</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="buttons-container">
+                <button class="form__button form__control--left" type="submit" mat-raised-button color="primary"
+                [disabled]="!form.valid || isShowPasswordConfirmError">Сохранить</button>
+                <a class="form__button form__control--right" type="button" uiSref="welcome" mat-raised-button
+                    color="accent">Отменить</a>
+            </div>               
+    </form>
+</app-page>

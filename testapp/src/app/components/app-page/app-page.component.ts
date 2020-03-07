@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { UIRouter } from '@uirouter/core';
 
 @Component({
   selector: 'app-page',
@@ -7,4 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class AppPageComponent {
   @Input() title: string;
+  @Input() showLogout = false;
+
+  constructor(private readonly router: UIRouter) {}
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.stateService.go('welcome');
+  }
 }

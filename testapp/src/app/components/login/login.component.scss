@@ -6,3 +6,13 @@
         width: 160px;
     }
 }
+
+.form {
+    width: min-content;
+    margin: auto;
+
+    &__control {
+        width: 300px !important;
+        margin: 10px auto;
+    }
+}

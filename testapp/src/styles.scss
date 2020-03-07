@@ -4,7 +4,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .page{
-
     &__container {
         margin-top: 64px;
         min-height: 100vh;
@@ -13,21 +12,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         justify-content: space-around;
     }
 
-    &__content {
-
-    }
-
     &__title {
         text-align: center;
+        padding: 16px;
     }
 }
 
-form {
-    width: min-content;
-    margin: auto;
+.buttons-container {
+    display: flex;
+    justify-content: center;
 
-    .mat-form-field-wrapper {
-        width: 300px !important;
-        margin: 10px auto;
-    }
+    a, button {
+        margin: 16px;
+        width: 200px;
+    }    
 }

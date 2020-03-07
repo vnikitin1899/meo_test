@@ -1,10 +1,6 @@
-export class LoginModel {
+import { BaseModel } from './base.model';
+
+export class LoginModel extends BaseModel<LoginModel> {
     login: string;
     password: string;
-
-    constructor(value?: Partial<LoginModel>) {
-        if (value) {
-            Object.assign(this, value);
-        }
-    }
 }
